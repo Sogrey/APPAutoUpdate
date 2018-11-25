@@ -14,13 +14,13 @@ public class BsDiffUtils {
         System.loadLibrary("bsdiff_lib");
     }
 
-    public synchronized static native boolean merge(String oldFilePath, String newFilePath, String patchPath);
+    public synchronized static native boolean patch(String oldFilePath, String newFilePath, String patchPath);
 
     public synchronized static native boolean diff(String oldFilePath, String newFilePath, String patchPath);
 
 
-    public static boolean merge(Context context, String newApkPath, String patchPath) {
-        return merge(context.getPackageResourcePath(), newApkPath, patchPath) && new File(newApkPath).exists();
+    public static boolean patch(Context context, String newApkPath, String patchPath) {
+        return patch(context.getPackageResourcePath(), newApkPath, patchPath) && new File(newApkPath).exists();
     }
 
     public static boolean diff(Context context, String newApkPath, String patchPath) {

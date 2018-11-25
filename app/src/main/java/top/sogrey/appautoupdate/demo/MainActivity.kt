@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         // Example of a call to a native method
         sample_text.text = ""
-        BsDiffUtils.merge("oldFile", "newFile", "patchFile")
+        BsDiffUtils.patch("oldFile", "newFile", "patchFile")
 
 
         if (getVersionCode() < 2) {
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             val oldPath = this@MainActivity.getApkSourceDir(packageName)
             var newPath = NEW_APK_PATH
             val patchPath = patchFile.absolutePath
-            BsDiffUtils.merge( oldPath, newPath, patchPath)
+            BsDiffUtils.patch( oldPath, newPath, patchPath)
 
             runOnUiThread {
                 this@MainActivity.installApk(newPath)

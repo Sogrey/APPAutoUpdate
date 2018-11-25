@@ -18,7 +18,7 @@ int main_exec(int (*mainFunc)(int, char **), int argc, char **argv) {
 }
 
 JNIEXPORT jboolean JNICALL
-Java_top_sogrey_lib_bsdiff_BsDiffUtils_merge(JNIEnv *env, jclass type, jstring oldFilePath_, jstring newFilePath_,
+Java_top_sogrey_lib_bsdiff_BsDiffUtils_patch(JNIEnv *env, jclass type, jstring oldFilePath_, jstring newFilePath_,
                              jstring patchPath_) {
 
     char *ch[5] = {0};
