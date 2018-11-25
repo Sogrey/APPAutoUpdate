@@ -1,8 +1,14 @@
 package top.sogrey.appautoupdate.demo
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
+import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.async
+import top.sogrey.appautoupdate.demo.utils.*
+import top.sogrey.lib.bsdiff.BsDiffUtils
+import java.io.File
+import java.net.URL
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,20 +17,32 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Example of a call to a native method
-        sample_text.text = stringFromJNI()
+        sample_text.text = ""
+        BsDiffUtils.merge("oldFile", "newFile", "patchFile")
+
+
+        if (getVersionCode() < 2) {
+            doBspatchTask();
+        }
     }
 
-    /**
-     * A native method that is implemented by the 'native-lib' native library,
-     * which is packaged with this application.
-     */
-    external fun stringFromJNI(): String
+    private fun doBspatchTask() {
+        async {
+            val bytes = URL(URL_PATCH_DOWNLOAD).readBytes()
+            val patchFile = File(Environment.getExternalStorageDirectory(), PATCH_FILE)
+            if (patchFile.exists()) {
+                patchFile.delete()
+            }
+            patchFile.writeBytes(bytes);
 
-    companion object {
+            val oldPath = this@MainActivity.getApkSourceDir(packageName)
+            var newPath = NEW_APK_PATH
+            val patchPath = patchFile.absolutePath
+            BsDiffUtils.merge( oldPath, newPath, patchPath)
 
-        // Used to load the 'native-lib' library on application startup.
-        init {
-            System.loadLibrary("native-lib")
+            runOnUiThread {
+                this@MainActivity.installApk(newPath)
+            }
         }
     }
 }
