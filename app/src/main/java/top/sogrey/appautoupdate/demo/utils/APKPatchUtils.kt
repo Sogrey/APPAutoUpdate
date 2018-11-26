@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Environment
 import android.util.Log
+import android.widget.Toast
 import java.io.File
 
 /**
@@ -32,6 +33,10 @@ fun Context.getVersionCode(): Int {
  */
 fun Context.getApkSourceDir(packageName:String):String{
     return this.packageManager.getApplicationInfo(packageName,0).sourceDir
+}
+
+fun Context.getUpdateDir():String{
+    return this.getExternalFilesDir("update").absolutePath
 }
 
 /**
