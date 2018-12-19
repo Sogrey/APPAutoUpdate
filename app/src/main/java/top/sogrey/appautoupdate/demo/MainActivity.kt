@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun bsdiffFun(view: View) {
+        toast("开始差分...")
         async {
             var isSuccess = BsDiffUtils.diff(this@MainActivity, getUpdateDir() + File.separator + newApkName,
                     getUpdateDir() + File.separator + patchFileName)
@@ -38,6 +39,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun bspatchFun(view: View) {
+        toast("开始合并...")
         if (getVersionCode() >= 2) {
             toast("已是最新app")
             return

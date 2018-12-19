@@ -40,7 +40,7 @@ fun Context.getUpdateDir():String{
 }
 
 /**
- * 安装apk
+ * 安装apk,注意android7.0这里并没有适配
  */
 fun Context.installApk(apkPath:String){
     val intent = Intent(Intent.ACTION_VIEW)
