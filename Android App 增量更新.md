@@ -53,25 +53,25 @@ cond(yes)->op0->op1->op2->end
 
 当前版本为4.3了，点击`here`下载。
 
-![下载bsdiff](F:\workspace\github\sogrey\sogrey.github.io\source\pics\download_bsdiff.jpg)
+![下载bsdiff](https://sogrey.github.io\pics\download_bsdiff.jpg)
 
 
 
 #### 下载[`bzip2`](http://www.bzip.org/downloads.html)
 
-![下载bzip2](F:\workspace\github\sogrey\sogrey.github.io\source\pics\download_bzip2.jpg)
+![下载bzip2](https://sogrey.github.io\pics\download_bzip2.jpg)
 
 下载地址上并没有直接给出下载链接，但是有一句提示，懂点英语的都能看懂，提示我们可以到` SourceForge`找到最新版，先不管`SourceForge`到底是什么东东，百度一下你就知道，
 
-![下载bzip2](F:\workspace\github\sogrey\sogrey.github.io\source\pics\download_bzip2_2.jpg)
+![下载bzip2](https://sogrey.github.io\pics\download_bzip2_2.jpg)
 
 看结果就应该是第一条了，点进去[搜索一下](https://sourceforge.net/directory/os:windows/?q=bzip2)
 
-![下载bzip2](F:\workspace\github\sogrey\sogrey.github.io\source\pics\download_bzip2_3.jpg)
+![下载bzip2](https://sogrey.github.io\pics\download_bzip2_3.jpg)
 
 应该是它，点击[See Project](https://sourceforge.net/projects/bzip2/)
 
-![下载bzip2](F:\workspace\github\sogrey\sogrey.github.io\source\pics\download_bzip2_4.jpg)
+![下载bzip2](https://sogrey.github.io\pics\download_bzip2_4.jpg)
 
 看见[Download](https://sourceforge.net/projects/bzip2/files/latest/download)了吧，下载就是了。
 
@@ -104,7 +104,7 @@ cpp目录
 
 差分`bsdiff.c`的`main()`方法：
 
-![bspatch main](F:\workspace\github\sogrey\sogrey.github.io\source\pics\bsdiff_main.jpg)
+![bspatch main](https://sogrey.github.io\pics\bsdiff_main.jpg)
 
 可以看到做差分的`bsdiff.c`的`main()`有一行代码：
 
@@ -121,7 +121,7 @@ int main(int argc,char *argv[])
 
 再看合并`bspatch.c`的`main()`方法（是不是神似，那就不多说了。）：
 
-![bspatch main](F:\workspace\github\sogrey\sogrey.github.io\source\pics\bspatch_main.jpg)
+![bspatch main](https://sogrey.github.io\pics\bspatch_main.jpg)
 
 下面就是开心又兴奋的撸码环节。
 
@@ -129,7 +129,7 @@ int main(int argc,char *argv[])
 
 新建android项目过程就不说了，**记得勾上c++支持**，将我们刚刚拷贝出来的`bsdiff`和`bzip`的c原文件以及头文件添加到`cpp`目录下：
 
-![编译异常](F:\workspace\github\sogrey\sogrey.github.io\source\pics\app_update3.jpg)
+![编译异常](https://sogrey.github.io\pics\app_update3.jpg)
 
 我们知道`bsdiff`是依赖于`bzip2`的，在`bsdiff.c`与`bspatch.c`引入的头文件里找到有这么一句：
 
@@ -266,15 +266,15 @@ target_link_libraries( # Specifies the target library.
 
 稍稍等待之后，报一异常：
 
-![编译异常](F:\workspace\github\sogrey\sogrey.github.io\source\pics\app_update1.jpg)
+![编译异常](https://sogrey.github.io\pics\app_update1.jpg)
 
 看不懂是何原因，我们切换到`Gradle Console`视窗，发现类似如下报错：
 
-![发现异常原因](F:\workspace\github\sogrey\sogrey.github.io\source\pics\app_update2.jpg)
+![发现异常原因](https://sogrey.github.io\pics\app_update2.jpg)
 
 意思就是在相关文件里发现多处`main()`方法，我们知道`main()`方法是程序入口，只能有一个，检查`.c`和`.cpp`文件把所有的`main()`方法重命名为文件名，再次运行：
 
-![发现异常原因](F:\workspace\github\sogrey\sogrey.github.io\source\pics\app_update4.jpg)
+![发现异常原因](https://sogrey.github.io\pics\app_update4.jpg)
 
 成功运行没有报错，c环境算是正常了。
 
