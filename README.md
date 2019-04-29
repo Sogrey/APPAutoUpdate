@@ -1,6 +1,7 @@
 # APPAutoUpdate
 App自动更新
 
+[![CodeFactor](https://www.codefactor.io/repository/github/sogrey/appautoupdate/badge)](https://www.codefactor.io/repository/github/sogrey/appautoupdate)
 
 
 查看文件md5：
